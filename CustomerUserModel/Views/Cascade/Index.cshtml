@@ -1,0 +1,80 @@
+﻿@model CustomerUserModel.Models.DisplayModel.User;
+@{
+	ViewData["Title"] = "Index";
+
+}
+
+<style>
+	.modal-header {
+		display: block !important;
+	}
+</style>
+<div class="container">
+	<button class="btn btn-outline-primary m-2" id="btnAddUser">Add New</button>
+
+	@* Design model Popup*@
+	<div class="modal fade" id="cascade_Modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="row">
+						<div class="col-6"><h3>Add User</h3></div>
+						<div class="col-6 "><button class="float-end  btn btn-outline-danger btn-close"></button></div>
+					</div>
+				</div>
+				<div class="modal-body">
+					<form method="post" id="cascade_form">
+						<div class="form-group">
+							<label>Name</label>
+							<input type="text" class="form-control" placeholder="Enter your Name" id="Name" />
+							<input type="hidden" id="UserId" />
+						</div>
+						<div class="form-group">
+							<lable>Country Name</lable>
+							<select id="Country" class="form-control">
+								<option value="">---select Country---</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<lable>State Name</lable>
+							<select id="State" class="form-control">
+								<option value="">---select State---</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<lable>City Name</lable>
+							<select id="City" class="form-control">
+								<option value="">---select City---</option>
+							</select>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<div>
+						<input type="button" value="Save" class="btn btn-outline-success float-end" style="margin-left:5px;" onclick="SaveUser()" />
+						<input type="button" class="btn btn-outline-primary btn-close float-end " />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-8 offset-2">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>UserId</th>
+						<th>Name</th>
+						<th>CountryName</th>
+						<th>CityName</th>
+						<th>StateName</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody id="tblCascade" class="text-center">
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,107 @@
+﻿@model CustomerUserModel.Models.GymTrainee
+
+@{
+	ViewData["Title"] = "SaveTraineeInfo";
+}
+
+<h1>SaveTraineeInfo</h1>
+
+<h4>GymTrainee</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="SaveTraineeInfo">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="FirstName" class="control-label"></label>
+				<input asp-for="FirstName" class="form-control" />
+				<span asp-validation-for="FirstName" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="LastName" class="control-label"></label>
+				<input asp-for="LastName" class="form-control" />
+				<span asp-validation-for="LastName" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="ContactNo" class="control-label"></label>
+				<input asp-for="ContactNo" class="form-control" />
+				<span asp-validation-for="ContactNo" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Gender" class="control-label"></label>
+				<input asp-for="Gender" class="form-control" />
+				<span asp-validation-for="Gender" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Age" class="control-label"></label>
+				<input asp-for="Age" class="form-control" />
+				<span asp-validation-for="Age" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Height" class="control-label"></label>
+				<select id="drpheight" asp-for="Height" asp-items="@ViewBag.Height_TL" class="form-control">
+					<option value="">---Select the Height---</option>
+				</select>
+				<span asp-validation-for="Height" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="weight" class="control-label"></label>
+				<input asp-for="weight" class="form-control" />
+				<span asp-validation-for="weight" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Address" class="control-label"></label>
+				<input asp-for="Address" class="form-control" />
+				<span asp-validation-for="Address" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="ImageName" class="control-label"></label>
+				<input asp-for="ImageName" class="form-control" />
+				<span asp-validation-for="ImageName" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="CreationDate" class="control-label"></label>
+				<input asp-for="CreationDate" class="form-control" />
+				<span asp-validation-for="CreationDate" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="BloodGroupId" class="control-label"></label>
+				<input type="hidden" asp-for="BloodGroupId" value="hidden" value="" />
+				<select asp-for="BloodGroupId" class="form-control" id="drpBloodGroupList" name="drpBloodGroupList" asp-items="ViewBag.BGL" onchange="SetBloodGroup()">
+					<option value="-1">--- select Blood Group ---</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label">Training Level</label>
+				<select name="DrpTainingLevelList" asp-for="TrainingLevelId" class="form-control" asp-items="ViewBag.DJTList">
+					<option value="-1">--select Training Level</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label asp-for="MonthlyFee" class="control-label"></label>
+				<input asp-for="MonthlyFee" class="form-control" />
+				<span asp-validation-for="MonthlyFee" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="ImageFile" class="control-label"></label>
+				<input type="file" asp-for="ImageFile" class="form-control" />
+				<span asp-validation-for="ImageFile" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Create" class="btn btn-primary" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<div>
+	<a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}
